@@ -12,7 +12,7 @@ class SpalniViewSet(viewsets.ModelViewSet):
     queryset = SpalniModel.objects.all()
     serializer_class = SpalniSerializer
     filter_backends = [DjangoFilterBackend,OrderingFilter,SearchFilter]
-    filter_fields = ['slug','brend','podcateg','photoMenu','height','depth','width']
+    filter_fields = ['slug','brend','podcateg','photoMenu','height','depth','width','top']
 
     pagination_class = PostPageNumberPagination
 

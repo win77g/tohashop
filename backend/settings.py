@@ -25,13 +25,16 @@ SECRET_KEY = '$2s81)%!49cba64kgl0hbrwk3y0yqfch$a408h##)6u_$6mrij'
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = True
+#ALLOWED_HOSTS = []
 #DEBUG = False
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.mebelkom.com.ua']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    # 'backend.apps.SuitConfig',
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -245,4 +248,7 @@ DJOSER = {
 #         'user':'authapp.serializers.UserCreateSerializer',
 #         # 'current_user':'authentication.serializers.CurrentUserSerializer',
 #     }
+# }
+# SUIT_CONFIG = {
+# 'ADMIN_NAME': 'Django Suit'
 # }
