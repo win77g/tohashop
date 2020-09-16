@@ -11,7 +11,7 @@ class PrihozhieViewSet(viewsets.ModelViewSet):
     queryset = PrihozhieModel.objects.all()
     serializer_class = PrihozhieSerializer
     filter_backends = [DjangoFilterBackend,OrderingFilter,SearchFilter]
-    filter_fields = ['slug','podcateg','photoMenu','brend','height','depth','width']
+    filter_fields = ['slug','podcateg','photoMenu','brend','height','depth','width','top']
 
     pagination_class = PostPageNumberPagination
 
