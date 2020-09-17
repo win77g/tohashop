@@ -13,6 +13,17 @@ class BrendAdmin (admin.ModelAdmin):
         }
 admin.site.register(Brend, BrendAdmin)
 
+class SeriaAdmin (admin.ModelAdmin):
+   #  вывод всех полей в админку
+      list_display = [field.name for field in Seria._meta.fields]
+      class Meta:
+           model = Seria
+      def get_prepopulated_fields(self, request, obj=None):
+        return {
+            'slug': ('name',)
+        }
+admin.site.register(Seria, SeriaAdmin)
+
 # class CategoryAdmin (admin.ModelAdmin):
 #    #  вывод всех полей в админку
 #       list_display = [field.name for field in Category._meta.fields]
