@@ -23,6 +23,11 @@ class WidhtSerializer(serializers.ModelSerializer):
         model = Width
         fields = ('name',)
 
+class WidthTumbForShuesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = WidthTumbForShues
+        fields = ('name',)        
+
 class DepthSerializer(serializers.ModelSerializer):
     class Meta:
         model = Depth

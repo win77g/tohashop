@@ -51,6 +51,15 @@ class Width(models.Model):
         verbose_name = 'Ширина'
         verbose_name_plural = 'Ширина'
 # ширина
+class WidthTumbForShues(models.Model):
+    name = models.CharField(max_length=120,blank=True, null=True, default=None,unique=True,verbose_name='Ширина тумбы для обуви')
+    # вывод одного поля
+    def __str__(self):
+        return " %s" % self.name
+    class Meta:
+        verbose_name = 'Ширина'
+        verbose_name_plural = 'Ширина'        
+# ширина
 # class Category(models.Model):
 #     name = models.CharField(verbose_name='Название',max_length=120,blank=True, null=True ,unique=True)
 #     slug = models.SlugField(verbose_name='Транслит', null = True, unique=True,)
@@ -105,6 +114,7 @@ class PrihozhieModel(models.Model):
     height = models.ForeignKey(Height,blank=True, null=True, default=None,on_delete=models.CASCADE,verbose_name='Высота',to_field='name')
     depth = models.ForeignKey(Depth,blank=True, null=True, default=None,on_delete=models.CASCADE,verbose_name='Глубина',to_field='name')
     width = models.ForeignKey(Width,blank=True, null=True, default=None,on_delete=models.CASCADE,verbose_name='Ширина',to_field='name')
+    widthforshues = models.ForeignKey(WidthTumbForShues,blank=True, null=True, default=None,on_delete=models.CASCADE,verbose_name='Ширина',to_field='name')
     description = RichTextUploadingField(verbose_name='Текст',blank=True, null=True, default=None)
     description_short = RichTextUploadingField(verbose_name='Текст(короткий)',blank=True, null=True, default=None)
     discount = models.IntegerField(default=0,verbose_name='Скидка')

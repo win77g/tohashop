@@ -67,6 +67,14 @@ class WidthAdmin (admin.ModelAdmin):
 
 admin.site.register(Width, WidthAdmin)
 
+class WidthTumbForShuesAdmin (admin.ModelAdmin):
+   #  вывод всех полей в админку
+      list_display = [field.name for field in WidthTumbForShues._meta.fields]
+      class Meta:
+           model = WidthTumbForShues
+
+admin.site.register(WidthTumbForShues, WidthTumbForShuesAdmin)
+
 # ----------------------------Gallery----------------------------------------------------------
 #добавление фоток внизу прдукт админки
 class PrihozhieImageInline(admin.TabularInline):
