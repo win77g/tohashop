@@ -57,8 +57,8 @@ class WidthTumbForShues(models.Model):
     def __str__(self):
         return " %s" % self.name
     class Meta:
-        verbose_name = 'Ширина'
-        verbose_name_plural = 'Ширина'        
+        verbose_name = 'Ширина тумбы для обуви'
+        verbose_name_plural = 'Ширина тумбы для обуви'        
 # ширина
 # class Category(models.Model):
 #     name = models.CharField(verbose_name='Название',max_length=120,blank=True, null=True ,unique=True)
