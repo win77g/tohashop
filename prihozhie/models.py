@@ -114,7 +114,7 @@ class PrihozhieModel(models.Model):
     height = models.ForeignKey(Height,blank=True, null=True, default=None,on_delete=models.CASCADE,verbose_name='Высота',to_field='name')
     depth = models.ForeignKey(Depth,blank=True, null=True, default=None,on_delete=models.CASCADE,verbose_name='Глубина',to_field='name')
     width = models.ForeignKey(Width,blank=True, null=True, default=None,on_delete=models.CASCADE,verbose_name='Ширина',to_field='name')
-    widthforshues = models.ForeignKey(WidthTumbForShues,blank=True, null=True, default=None,on_delete=models.CASCADE,verbose_name='Ширина',to_field='name')
+    widthforshues = models.ForeignKey(WidthTumbForShues,blank=True, null=True, default=None,on_delete=models.CASCADE,verbose_name='Ширина тумбы для обуви',to_field='name')
     description = RichTextUploadingField(verbose_name='Текст',blank=True, null=True, default=None)
     description_short = RichTextUploadingField(verbose_name='Текст(короткий)',blank=True, null=True, default=None)
     discount = models.IntegerField(default=0,verbose_name='Скидка')
