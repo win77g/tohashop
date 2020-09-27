@@ -50,6 +50,16 @@ class Width(models.Model):
     class Meta:
         verbose_name = 'Ширина'
         verbose_name_plural = 'Ширина'
+        
+class Seria(models.Model):
+    name = models.CharField(max_length=120,blank=True, null=True, default=None,unique=True,verbose_name='Высота')
+    slug = models.SlugField(blank=True, null=True, default=None ,verbose_name='Транслит', unique=True)
+    # вывод одного поля
+    def __str__(self):
+        return " %s" % self.name
+    class Meta:
+        verbose_name = 'Серия'
+        verbose_name_plural = 'Серия'        
 # ширина
 # class Category(models.Model):
 #     name = models.CharField(verbose_name='Название',max_length=120,blank=True, null=True ,unique=True)
@@ -88,6 +98,7 @@ class KuhniModel(models.Model):
     category = models.ForeignKey(Category, blank=True, null=True,related_name = 'category',on_delete=models.CASCADE,verbose_name='Категория',to_field='slug')
     podcateg = models.ForeignKey(Podcateg, blank=True, null=True,related_name = 'podcategory',on_delete=models.CASCADE,verbose_name='Подкатегория',to_field='slug')
     brend = models.ForeignKey(Brend,blank=True, null=True, default=None,on_delete=models.CASCADE,verbose_name='Бренд',to_field='name')
+    seria = models.ForeignKey(Seria,blank=True, null=True, default=None,on_delete=models.CASCADE,verbose_name='Серия',to_field='slug')
     image_1 = models.ImageField(upload_to=image_folder, blank=True, null=True, default=None,verbose_name='Фотка1')
     image_2 = models.ImageField(upload_to=image_folder, blank=True, null=True, default=None,verbose_name='Фотка2')
     slug = models.SlugField(blank=True, null=True, default=None,verbose_name='Транслит(Не трогать)')

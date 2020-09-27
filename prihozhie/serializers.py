@@ -5,7 +5,7 @@ from rest_framework import serializers
 class PrihozhieSerializer(serializers.ModelSerializer):
     class Meta:
         model = PrihozhieModel
-        fields = ('id','name','keyword','category','podcateg','brend','image_1','image_2',
+        fields = ('id','name','keyword','category','podcateg','brend','seria','image_1','image_2',
                   'slug','price','height','depth','width','description','description_short',
                   'discount','is_active','new_product','top','photoMenu','slider','comments')
 
