@@ -20,6 +20,16 @@ admin.site.register(Brend, BrendAdmin)
 #            model = Category
 
 # admin.site.register(Category, CategoryAdmin)
+class SeriaAdmin (admin.ModelAdmin):
+   #  вывод всех полей в админку
+      list_display = [field.name for field in Seria._meta.fields]
+      class Meta:
+           model = Seria
+      def get_prepopulated_fields(self, request, obj=None):
+        return {
+            'slug': ('name',)
+        }
+admin.site.register(Seria, SeriaAdmin)
 
 class PodcategAdmin (admin.ModelAdmin):
    #  вывод всех полей в админку
@@ -68,7 +78,7 @@ class GostinyeModelAdmin (admin.ModelAdmin):
    #  вывод всех полей в админку
    #    list_display = [field.name for field in Product._meta.fields]
    inlines = [GostinyeImageInline,]
-   list_display = ('name','brend','category','podcateg','image_img', 'price','photoMenu','is_active','new_product','top','slider')
+   list_display = ('name','brend','category','podcateg','image_img', 'price','photoMenu','is_active','new_product','top',)
    readonly_fields = ['image_img',]
    # verbose_name_plural = 'Main'
    search_fields = ["price","name","brend__name"]
