@@ -12,7 +12,7 @@ class DerevyannayamebelViewSet(viewsets.ModelViewSet):
     queryset = DerevyannayamebelModel.objects.all()
     serializer_class = DerevyannayamebelSerializer
     filter_backends = [DjangoFilterBackend,OrderingFilter,SearchFilter]
-    filter_fields = ['slug','brend','top','photoMenu','podcateg','height','depth','width']
+    filter_fields = ['slug','brend','top','photoMenu','podcateg','height','depth','width','top']
 
     pagination_class = PostPageNumberPagination
 

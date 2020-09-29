@@ -12,7 +12,7 @@ class DetskieViewSet(viewsets.ModelViewSet):
     queryset = DetskieModel.objects.all()
     serializer_class = DetskieSerializer
     filter_backends = [DjangoFilterBackend,OrderingFilter,SearchFilter]
-    filter_fields = ['slug','brend','podcateg','photoMenu','height','depth','width']
+    filter_fields = ['slug','brend','podcateg','photoMenu','height','depth','width','top']
 
     pagination_class = PostPageNumberPagination
 
