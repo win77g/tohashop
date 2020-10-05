@@ -24,13 +24,21 @@ def pre_save_brend_slug(sender,instance, *args, **kwargs):
 pre_save.connect(pre_save_brend_slug, sender=Brend)
 # высота
 class Height(models.Model):
-    name = models.CharField(max_length=120,blank=True, null=True, default=None,unique=True,verbose_name='Высота')
+    name = models.CharField(max_length=120,blank=True, null=True, default=None,unique=True,verbose_name='Высота шкафа')
     # вывод одного поля
     def __str__(self):
         return " %s" % self.name
     class Meta:
-        verbose_name = 'Высота'
-        verbose_name_plural = 'Высота'
+        verbose_name = 'Высота шкафа'
+        verbose_name_plural = 'Высота шкафа'
+class Height_penal(models.Model):
+    name = models.CharField(max_length=120,blank=True, null=True, default=None,unique=True,verbose_name='Высота пенала')
+    # вывод одного поля
+    def __str__(self):
+        return " %s" % self.name
+    class Meta:
+        verbose_name = 'Высота пенала'
+        verbose_name_plural = 'Высота пенала'        
 # глубина
 class Depth(models.Model):
     name = models.CharField(max_length=120,blank=True, null=True, default=None,unique=True,verbose_name='Глубина')
@@ -42,13 +50,22 @@ class Depth(models.Model):
         verbose_name_plural = 'Глубина'
 # ширина
 class Width(models.Model):
-    name = models.CharField(max_length=120,blank=True, null=True, default=None,unique=True,verbose_name='Ширина')
+    name = models.CharField(max_length=120,blank=True, null=True, default=None,unique=True,verbose_name='Ширина шкафа')
     # вывод одного поля
     def __str__(self):
         return " %s" % self.name
     class Meta:
-        verbose_name = 'Ширина'
-        verbose_name_plural = 'Ширина'
+        verbose_name = 'Ширина шкафа'
+        verbose_name_plural = 'Ширина шкафа'
+# ширина
+class Width_penal(models.Model):
+    name = models.CharField(max_length=120,blank=True, null=True, default=None,unique=True,verbose_name='Ширина_пенала')
+    # вывод одного поля
+    def __str__(self):
+        return " %s" % self.name
+    class Meta:
+        verbose_name = 'Ширина пенала'
+        verbose_name_plural = 'Ширина пенала'        
 # ширина
 class Podcateg(models.Model):
     name = models.CharField(verbose_name='Название',max_length=120,blank=True, null=True ,unique=True)
@@ -74,10 +91,14 @@ class SkafModel(models.Model):
     image_1 = models.ImageField(upload_to=image_folder, blank=True, null=True, default=None,verbose_name='Фотка1')
     image_2 = models.ImageField(upload_to=image_folder, blank=True, null=True, default=None,verbose_name='Фотка2')
     slug = models.SlugField(blank=True, null=True, default=None,verbose_name='Транслит(Не трогать)')
-    price = models.DecimalField(max_digits=10, decimal_places=2, default=0,verbose_name='Цена')
-    height = models.ForeignKey(Height,blank=True, null=True, default=None,on_delete=models.CASCADE,verbose_name='Высота',to_field='name')
-    depth = models.ForeignKey(Depth,blank=True, null=True, default=None,on_delete=models.CASCADE,verbose_name='Глубина',to_field='name')
-    width = models.ForeignKey(Width,blank=True, null=True, default=None,on_delete=models.CASCADE,verbose_name='Ширина',to_field='name')
+    price = models.DecimalField(max_digits=10, decimal_places=2, default=0,verbose_name='Цена шкафа')
+    price_shelf_1 = models.DecimalField(max_digits=10, decimal_places=2, default=0,verbose_name='Цена пенала 0,450мм')
+    price_shelf_2 = models.DecimalField(max_digits=10, decimal_places=2, default=0,verbose_name='Цена пенала 0,600мм')
+    height = models.ForeignKey(Height,blank=True, null=True, default=None,on_delete=models.CASCADE,verbose_name='Высота шкафа',to_field='name')
+    height_penal = models.ForeignKey(Height_penal,blank=True, null=True, default=None,on_delete=models.CASCADE,verbose_name='Высота пенала',to_field='name')
+    depth = models.ForeignKey(Depth,blank=True, null=True, default=None,on_delete=models.CASCADE,verbose_name='Глубина шкафа',to_field='name')
+    width = models.ForeignKey(Width,blank=True, null=True, default=None,on_delete=models.CASCADE,verbose_name='Ширина шкафа',to_field='name')
+    width_penal = models.ForeignKey(Width_penal,blank=True, null=True, default=None,on_delete=models.CASCADE,verbose_name='Ширина пенала',to_field='name')
     description = RichTextUploadingField(verbose_name='Текст',blank=True, null=True, default=None)
     description_short = RichTextUploadingField(verbose_name='Текст(короткий)',blank=True, null=True, default=None)
     discount = models.IntegerField(default=0,verbose_name='Скидка')

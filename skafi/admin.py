@@ -32,6 +32,14 @@ class HeightAdmin (admin.ModelAdmin):
 
 admin.site.register(Height, HeightAdmin)
 
+class Height_penalAdmin (admin.ModelAdmin):
+   #  вывод всех полей в админку
+      list_display = [field.name for field in Height_penal._meta.fields]
+      class Meta:
+           model = Height_penal
+
+admin.site.register(Height_penal, Height_penalAdmin)
+
 class DepthAdmin (admin.ModelAdmin):
    #  вывод всех полей в админку
       list_display = [field.name for field in Depth._meta.fields]
@@ -47,6 +55,14 @@ class WidthAdmin (admin.ModelAdmin):
            model = Width
 
 admin.site.register(Width, WidthAdmin)
+
+class Width_penalAdmin (admin.ModelAdmin):
+   #  вывод всех полей в админку
+      list_display = [field.name for field in Width_penal._meta.fields]
+      class Meta:
+           model = Width_penal
+
+admin.site.register(Width_penal, Width_penalAdmin)
 
 # ----------------------------Gallery----------------------------------------------------------
 #добавление фоток внизу прдукт админки
