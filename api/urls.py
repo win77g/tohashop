@@ -28,6 +28,7 @@ router.register(r'producthome', GetProductForHomeViewSet)
 # вывод одного шкафа
 router.register(r'category',GetCategoryViewSet)
 router.register(r'shkafy-kupe', SkafViewSet)
+router.register(r'pristavki-k-shkafam-kupe', SkafViewSet)
 router.register(r'shkaf', SkafViewSet)
 router.register(r'height', SkafHeightViewSet)
 router.register(r'deep', SkafDeepViewSet)
