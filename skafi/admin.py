@@ -76,7 +76,7 @@ class SkafModelAdmin (admin.ModelAdmin):
    #  вывод всех полей в админку
    #    list_display = [field.name for field in Product._meta.fields]
    inlines = [SkafImageInline,]
-   list_display = ('name','brend','podcateg','image_img', 'price',' price_shelf_1',' price_shelf_2','is_active','top')
+   list_display = ('name','brend','podcateg','image_img', 'price','price_shelf_1','price_shelf_2','is_active','top')
    readonly_fields = ['image_img',]
    # verbose_name_plural = 'Main'
    search_fields = ["price","name","brend__name"]
