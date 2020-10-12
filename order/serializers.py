@@ -5,7 +5,7 @@ from rest_framework import serializers
 class ProductInBasketSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductInBasketModel
-        fields = ('id','token_key','qty','product','price','image',
+        fields = ('id','token_key','qty','product','price','image','color',
                   'total_price','is_active','created','updated')
 
 class OrderSerializer(serializers.ModelSerializer):
@@ -18,6 +18,6 @@ class OrderSerializer(serializers.ModelSerializer):
 class ProductInOrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductInOrderModel
-        fields = ('id','order','product','nmb','size','price_per_item','image','total_price','is_active','created',
+        fields = ('id','order','product','nmb','size','price_per_item','image','color','total_price','is_active','created',
                   'updated')
 

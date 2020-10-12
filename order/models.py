@@ -22,10 +22,10 @@ class Status(models.Model):
 class  ProductInBasketModel(models.Model):
     token_key = models.CharField(max_length=128,blank=True, null=True, default=None)
     qty = models.IntegerField(default=1,blank=True, null=True,verbose_name='Кол.во')
-
     product = models.CharField(max_length=128,blank=True, null=True, default=None,verbose_name='Продукт')
     price = models.DecimalField(max_digits=10,decimal_places=2, default=0,verbose_name='Цена')
     image = models.CharField(max_length=128,blank=True, null=True, default=None,verbose_name='Фото')
+    color = models.CharField(max_length=128,blank=True, null=True, default=None,verbose_name='Цвет фасада')
     total_price = models.DecimalField(max_digits=10,decimal_places=2, default=0,verbose_name='Итого')
     is_active = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True,auto_now=False,verbose_name='Создан')
@@ -63,14 +63,13 @@ class OrderModel(models.Model):
 
 class ProductInOrderModel(models.Model):
     order = models.ForeignKey(OrderModel,blank=True, null=True, default=None,on_delete=models.CASCADE)
-
     product = models.CharField(max_length=128,blank=True, null=True, default=None,verbose_name='Продукт')
     nmb = models.IntegerField(default=1)
     size = models.CharField(max_length=10,blank=True, null=True, default=None,verbose_name='Размер')
     price_per_item = models.DecimalField(max_digits=10,decimal_places=2, default=0)
     image = models.CharField(max_length=128,blank=True, null=True, default=None,verbose_name='Фото')
+    color = models.CharField(max_length=128,blank=True, null=True, default=None,verbose_name='Цвет фасада')
     total_price = models.DecimalField(max_digits=10,decimal_places=2, default=0)#price*nmb
-
     is_active = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True,auto_now=False)
     updated = models.DateTimeField(auto_now_add=False,auto_now=True)

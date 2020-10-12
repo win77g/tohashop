@@ -28,11 +28,12 @@ class ProductInBasket(APIView):
           print(image)
           total_price = request.data.get("total_price")
           print(total_price)
+          color = request.data.get("color")
           new_product, created = ProductInBasketModel.objects.get_or_create(
                                                      token_key=token_key,
                                                      qty=qty,
                                                      product=product_name,
-                                                     price=price,image=image,total_price=total_price)
+                                                     price=price,image=image,color=color,total_price=total_price)
           if not created:
                new_product.qty += int(qty)
                new_product.total_price += int(total_price)
@@ -86,9 +87,9 @@ class Order(APIView):
                 if name:
                     id = name.id
                     product_in_baskets = ProductInBasketModel.objects.get(token_key=data["token_key"], is_active=True,id = id )
-                    print('---')
+                    
                     print(product_in_baskets.product)
-                    print('---')
+                    
                     product_in_baskets.save(force_update=True)
                     q = ProductInOrderModel.objects.create(
                                                  # id = order.id,
@@ -96,6 +97,7 @@ class Order(APIView):
                                                  nmb = product_in_baskets.qty,
                                                  price_per_item = product_in_baskets.price,
                                                  image = product_in_baskets.image,
+                                                 color = product_in_baskets.color,
                                                  total_price = product_in_baskets.total_price,
                                                  order = order,
                     )
