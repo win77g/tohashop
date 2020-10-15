@@ -12,7 +12,7 @@ class SkafViewSet(viewsets.ModelViewSet):
     queryset = SkafModel.objects.all()
     serializer_class = SkafSerializer
     filter_backends = [DjangoFilterBackend,OrderingFilter,SearchFilter]
-    filter_fields = ['slug','photoMenu','brend','new_product','height','depth','width','top']
+    filter_fields = ['slug','podcateg','photoMenu','brend','new_product','height','depth','width','top']
 
     pagination_class = PostPageNumberPagination
 
