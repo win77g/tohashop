@@ -70,6 +70,9 @@ class Width_penal(models.Model):
 class Podcateg(models.Model):
     name = models.CharField(verbose_name='Название',max_length=120,blank=True, null=True ,unique=True)
     slug = models.SlugField(verbose_name='Транслит', null = True, unique=True,)
+    description = RichTextUploadingField(verbose_name='Описание',max_length=120,blank=True, null=True ,unique=True)
+    meta_k = models.CharField(verbose_name='Ключевые слова',max_length=120,blank=True, null=True ,unique=True)
+    meta_d = RichTextUploadingField(verbose_name='Мета описание',max_length=120,blank=True, null=True ,unique=True)
     # вывод одного поля
     def __str__(self):
         return " %s" % self.name

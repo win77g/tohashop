@@ -16,6 +16,11 @@ class SkafViewSet(viewsets.ModelViewSet):
 
     pagination_class = PostPageNumberPagination
 
+class SkafPodcategViewSet(viewsets.ModelViewSet):
+    permission_classes = [permissions.AllowAny, ]
+    queryset = Podcateg.objects.all()
+    serializer_class = PodcategSerializer
+    filter_fields = ['slug']
 
 class SkafHeightViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.AllowAny, ]
