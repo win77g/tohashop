@@ -25,9 +25,9 @@ SECRET_KEY = '$2s81)%!49cba64kgl0hbrwk3y0yqfch$a408h##)6u_$6mrij'
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = True
-ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = []
 #DEBUG = False
-#ALLOWED_HOSTS = ['www.mebelkom.com.ua']
+ALLOWED_HOSTS = ['www.mebelkom.com.ua']
 
 
 # Application definition
