@@ -681,7 +681,7 @@ i:before {
 }
 
 .shop_header_area .navbar {
-  padding: 10px;
+  padding: 0px;
   background-color: transparent !important;
   border-top: 2px solid #eeeeee;
   border-bottom: 2px solid #d91522;
@@ -931,10 +931,11 @@ i:before {
   font-size: 12px;
   position: absolute;
   font-weight: normal;
-  right: 6px;
-  bottom: 6px;
+  right: 10px;
+  bottom: 1px;
   background: #d91522;
   line-height: 20px;
+  list-style-type: none; /* Убираем маркеры */
 }
 
 /* End Carousel Header css
