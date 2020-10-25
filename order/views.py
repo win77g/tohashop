@@ -5,6 +5,8 @@ from rest_framework import viewsets,permissions
 from order.serializers import *
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.utils.html import strip_tags
+from django.core.mail import send_mail
 # вывод всех продуктов в корзине
 class ProductInBasketViewSet(viewsets.ModelViewSet):
     permission_classes = [ permissions.IsAuthenticated, ]
@@ -15,19 +17,19 @@ class ProductInBasketViewSet(viewsets.ModelViewSet):
 class ProductInBasket(APIView):
       permission_classes = [permissions.AllowAny, ]
       def post(self,request):
-          print(request.data)
+         
           token_key = request.data.get("token_key")
-          print(token_key)
+          
           qty = request.data.get("qty")
-          print(qty)
+          
           product_name = request.data.get("product_name")
 
           price = request.data.get("price")
-          print(price)
+         
           image = request.data.get("image")
-          print(image)
+          
           total_price = request.data.get("total_price")
-          print(total_price)
+          
           color = request.data.get("color")
           new_product, created = ProductInBasketModel.objects.get_or_create(
                                                      token_key=token_key,
@@ -58,7 +60,7 @@ class UpdateProductInBasket(APIView):
 
        def post(self,request):
            data = request.data
-           print(data)
+          
            products_in_basket = ProductInBasketModel.objects.filter(id=data["id"])
            for ob in products_in_basket:
              ob.qty = int(data["qty"])
@@ -72,7 +74,7 @@ class Order(APIView):
        def post(self,request):
            data = request.data
            products_in_basket = ProductInBasketModel.objects.filter(token_key=data["token_key"], is_active=True)#.exclude(order__isnull=False)
-           print(products_in_basket)
+          
            user = User.objects.get(auth_token = data["token_key"])
            order = OrderModel.objects.create(user = user,
                                          customer_email = data["email"],
@@ -88,8 +90,6 @@ class Order(APIView):
                     id = name.id
                     product_in_baskets = ProductInBasketModel.objects.get(token_key=data["token_key"], is_active=True,id = id )
                     
-                    print(product_in_baskets.product)
-                    
                     product_in_baskets.save(force_update=True)
                     q = ProductInOrderModel.objects.create(
                                                  # id = order.id,
@@ -101,6 +101,16 @@ class Order(APIView):
                                                  total_price = product_in_baskets.total_price,
                                                  order = order,
                     )
+                    # , 'delivery':delivery
+           html_message = render_to_string('mail_template.html', {'context':prod,'order':order, 'total_price':total})
+           plain_message = strip_tags(html_message)
+
+           send_mail('Mebelkom - Мебельный гиппермаркет',
+                              plain_message,
+                              'sergsergio777@gmail.com',
+                              customer_email, html_message=html_message,
+                              )
+
            products_in_basket.delete()
            return Response(status=201)
 
