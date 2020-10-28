@@ -102,7 +102,7 @@ class Order(APIView):
                                                  order = order,
                     )
                     # , 'delivery':delivery
-           html_message = render_to_string('mail_template.html', {'context':prod,'order':order, 'total_price':total})
+           html_message = render_to_string('mail_template.html', {'context':product,'order':order, 'total_price':total})
            plain_message = strip_tags(html_message)
 
            send_mail('Mebelkom - Мебельный гиппермаркет',
