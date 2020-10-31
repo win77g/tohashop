@@ -75,7 +75,6 @@ INSTALLED_APPS = [
     'derevyannayamebel',
     'myagkayamebel',
     'index',
-
 ]
 
 MIDDLEWARE = [
