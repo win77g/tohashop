@@ -33,7 +33,7 @@ class BrendSerializer(serializers.ModelSerializer):
         model = Brend
         fields = ('name','slug',)
 
-class KyhniImageSerializer(serializers.ModelSerializer):
+class KuhniImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = KuhniImage
         fields = ('id','product','image','slug',)

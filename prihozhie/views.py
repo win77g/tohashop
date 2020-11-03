@@ -21,3 +21,9 @@ class PrihozhiePodcategViewSet(viewsets.ModelViewSet):
 
     serializer_class = PodcategSerializer
     filter_fields = ['slug']
+
+class GetPrihozhieImageViewSet(viewsets.ModelViewSet):
+    permission_classes = [permissions.AllowAny, ]
+    queryset = PrihozhieImage.objects.all()
+    serializer_class = PrihozhieImageSerializer
+    filter_fields = ('product',)

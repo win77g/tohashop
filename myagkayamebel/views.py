@@ -21,3 +21,9 @@ class MyagkayamebelPodcategViewSet(viewsets.ModelViewSet):
     queryset = Podcateg.objects.all()
     serializer_class = PodcategSerializer
     filter_fields = ['slug']
+
+class GetMyagkayamebelImageViewSet(viewsets.ModelViewSet):
+    permission_classes = [permissions.AllowAny, ]
+    queryset = MyagkayamebelImage.objects.all()
+    serializer_class = MyagkayamebelImageSerializer
+    filter_fields = ('product',)

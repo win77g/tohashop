@@ -12,7 +12,6 @@ class KuhniViewSet(viewsets.ModelViewSet):
     serializer_class = KuhniSerializer
     filter_backends = [DjangoFilterBackend,OrderingFilter,SearchFilter]
     filter_fields = ['slug','podcateg','photoMenu','brend','height','depth','width','top']
-
     pagination_class = PostPageNumberPagination
 
 class KuhniPodcategViewSet(viewsets.ModelViewSet):
@@ -20,3 +19,10 @@ class KuhniPodcategViewSet(viewsets.ModelViewSet):
     queryset = Podcateg.objects.all()
     serializer_class = PodcategSerializer
     filter_fields = ['slug']
+
+class GetKuhniImageViewSet(viewsets.ModelViewSet):
+    permission_classes = [permissions.AllowAny, ]
+    queryset = KuhniImage.objects.all()
+    serializer_class = KuhniImageSerializer
+    filter_fields = ('product',)
+    

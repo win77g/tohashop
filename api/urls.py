@@ -12,13 +12,13 @@ from home.views import BigSliderViewSet,AdvertisingImageViewSet
 from wishlist.views import WishlistPost,WishlistViewSet,DeleteWishlist
 from quethen.views import QuethenViewSet
 from skafi.views import *
-from kuhni.views import KuhniViewSet,KuhniPodcategViewSet
-from gostinye.views import GostinyeViewSet,GostinyePodcategViewSet
-from prihozhie.views import PrihozhieViewSet,PrihozhiePodcategViewSet
-from spalni.views import SpalniViewSet,SpalniPodcategViewSet
-from detskie.views import DetskieViewSet,DetskiePodcategViewSet
+from kuhni.views import KuhniViewSet,KuhniPodcategViewSet,GetKuhniImageViewSet
+from gostinye.views import GostinyeViewSet,GostinyePodcategViewSet,GetGostinyeImageViewSet
+from prihozhie.views import PrihozhieViewSet,PrihozhiePodcategViewSet,GetPrihozhieImageViewSet
+from spalni.views import SpalniViewSet,SpalniPodcategViewSet,GetSpalniImageViewSet
+from detskie.views import DetskieViewSet,DetskiePodcategViewSet,GetDetskieImageViewSet
 from derevyannayamebel.views import DerevyannayamebelViewSet,DerevyannayamebelPodcategViewSet
-from myagkayamebel.views import MyagkayamebelViewSet,MyagkayamebelPodcategViewSet
+from myagkayamebel.views import MyagkayamebelViewSet,MyagkayamebelPodcategViewSet,GetMyagkayamebelImageViewSet
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 # router.register(r'register', UserRegisterViewSet)
@@ -35,7 +35,13 @@ router.register(r'height', SkafHeightViewSet)
 router.register(r'deep', SkafDeepViewSet)
 router.register(r'widht', SkafWidhtViewSet)
 router.register(r'brend', SkafBrendViewSet)
-router.register(r'gallerySkaf',GetSkafImageViewSet)
+router.register(r'gallerySkaf',  GetSkafImageViewSet)
+router.register(r'galleryKuhni',GetKuhniImageViewSet) 
+router.register(r'galleryGostiny',GetGostinyeImageViewSet)
+router.register(r'galleryPrihozhie',GetPrihozhieImageViewSet)
+router.register(r'gallerySpalni',GetSpalniImageViewSet)
+router.register(r'galleryDetskie',GetDetskieImageViewSet)
+router.register(r'galleryMyagkayamebel',GetMyagkayamebelImageViewSet)
 router.register(r'kuhni',KuhniViewSet)
 router.register(r'kuhnipodcateg',KuhniPodcategViewSet)
 router.register(r'gostinye',GostinyeViewSet)

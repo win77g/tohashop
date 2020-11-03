@@ -20,3 +20,9 @@ class GostinyePodcategViewSet(viewsets.ModelViewSet):
     queryset = Podcateg.objects.all()
     serializer_class = PodcategSerializer
     filter_fields = ['slug']
+
+class GetGostinyeImageViewSet(viewsets.ModelViewSet):
+    permission_classes = [permissions.AllowAny, ]
+    queryset = GostinyeImage.objects.all()
+    serializer_class = GostinyeImageSerializer
+    filter_fields = ('product',)

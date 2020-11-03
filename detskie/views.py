@@ -21,3 +21,9 @@ class DetskiePodcategViewSet(viewsets.ModelViewSet):
     queryset = Podcateg.objects.all()
     serializer_class = PodcategSerializer
     filter_fields = ['slug']
+
+class GetDetskieImageViewSet(viewsets.ModelViewSet):
+    permission_classes = [permissions.AllowAny, ]
+    queryset = DetskieImage.objects.all()
+    serializer_class = DetskieImageSerializer
+    filter_fields = ('product',)

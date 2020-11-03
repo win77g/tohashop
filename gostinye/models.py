@@ -140,7 +140,7 @@ def pre_save_product_slug(sender,instance, *args, **kwargs):
         instance.slug = slug
 pre_save.connect(pre_save_product_slug, sender=GostinyeModel)
 # -----------------------------end product-------------------------------------------------------------
-#  --------------------------Gallery-------------------------------------------------------
+# -----------------------------Gallery-----------------------------------------------------------------
 # создание названия фотки
 def image_gallary_folder(instance,filename):
     filename = instance.slug +'.'+filename.split('.')[1]
