@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-
+from .mail import GoogleSmtp
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -251,3 +251,13 @@ DJOSER = {
 # SUIT_CONFIG = {
 # 'ADMIN_NAME': 'Django Suit'
 # }
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'sergsergio777@gmail.com'
+# EMAIL_HOST_USER = 'percaleshop@gmail.com'
+# EMAIL_HOST_PASSWORD = GoogleSmtp.password
+EMAIL_HOST_PASSWORD = 'marmon300'
+EMAIL_PORT =  587
+EMAIL_USE_TLS = True
+#EMAIL_USE_SSL = False
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

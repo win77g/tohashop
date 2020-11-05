@@ -6,6 +6,7 @@ from order.serializers import *
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.utils.html import strip_tags
+from django.template.loader import render_to_string
 from django.core.mail import send_mail
 # вывод всех продуктов в корзине
 class ProductInBasketViewSet(viewsets.ModelViewSet):
@@ -73,8 +74,16 @@ class UpdateProductInBasket(APIView):
 class Order(APIView):
        def post(self,request):
            data = request.data
+           customer_email = data["email"],
            products_in_basket = ProductInBasketModel.objects.filter(token_key=data["token_key"], is_active=True)#.exclude(order__isnull=False)
-          
+           prod = products_in_basket.values()
+           p = list(prod)
+           a = []
+           for item in p:
+              q = int(float(item["total_price"]))
+              a.append(q)
+              total = sum(a)
+           delivery = data["address"]
            user = User.objects.get(auth_token = data["token_key"])
            order = OrderModel.objects.create(user = user,
                                          customer_email = data["email"],
@@ -102,7 +111,7 @@ class Order(APIView):
                                                  order = order,
                     )
                     # , 'delivery':delivery
-           html_message = render_to_string('mail_template.html', {'context':product,'order':order, 'total_price':total})
+           html_message = render_to_string('mail_template.html', {'context':prod,'order':order, 'total_price':total,'delivery':delivery})
            plain_message = strip_tags(html_message)
 
            send_mail('Mebelkom - Мебельный гиппермаркет',
