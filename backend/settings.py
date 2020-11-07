@@ -253,12 +253,12 @@ DJOSER = {
 # }
 
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'sergsergio777@gmail.com'
-#EMAIL_HOST_USER = 'mebelkomniko@gmail.com'
-# EMAIL_HOST_USER = 'percaleshop@gmail.com'
+#EMAIL_HOST_USER = 'sergsergio777@gmail.com'
+EMAIL_HOST_USER = 'mebelkomniko@gmail.com'
+#EMAIL_HOST_USER = 'percaleshop@gmail.com'
 #EMAIL_HOST_PASSWORD = GoogleSmtp.password
-EMAIL_HOST_PASSWORD = 'marmon300'
-#EMAIL_HOST_PASSWORD = 'mebelkomNiko2020'
+#EMAIL_HOST_PASSWORD = 'marmon300'
+EMAIL_HOST_PASSWORD = 'mebelkomNiko2020'
 EMAIL_PORT =  587
 EMAIL_USE_TLS = True
 #EMAIL_USE_SSL = False

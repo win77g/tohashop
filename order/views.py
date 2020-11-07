@@ -116,7 +116,7 @@ class Order(APIView):
 
            send_mail('Mebelkom - Мебельный гиппермаркет',
                               plain_message,
-                              'sergsergio777@gmail.com',
+                              'mebelkomniko@gmail.com',
                               customer_email, html_message=html_message,
                               )
 
