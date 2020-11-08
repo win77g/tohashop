@@ -25,9 +25,9 @@ SECRET_KEY = '$2s81)%!49cba64kgl0hbrwk3y0yqfch$a408h##)6u_$6mrij'
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = True
-ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = []
 #DEBUG = False
-#ALLOWED_HOSTS = ['www.mebelkom.com.ua']
+ALLOWED_HOSTS = ['www.mebelkom.com.ua']
 
 
 # Application definition
@@ -256,7 +256,8 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'sergsergio777@gmail.com'
 #EMAIL_HOST_USER = 'mebelkomniko@gmail.com'
 # EMAIL_HOST_USER = 'percaleshop@gmail.com'
-EMAIL_HOST_PASSWORD = GoogleSmtp.password
+#EMAIL_HOST_PASSWORD = GoogleSmtp.password
+EMAIL_HOST_PASSWORD = 'marmon300'
 #EMAIL_HOST_PASSWORD = 'mebelkomNiko2020'
 EMAIL_PORT =  587
 EMAIL_USE_TLS = True
