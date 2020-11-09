@@ -7,6 +7,9 @@ from users.serializers import UserSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
+from django.utils.html import strip_tags
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -25,3 +28,23 @@ class GetUser(APIView):
       user = Token.objects.get(key=token).user
       serializer = UserSerializer(user)
       return Response({'data':serializer.data})
+
+class SendMailForNewEmail(APIView):
+    permission_classes = [permissions.AllowAny, ]
+    def post(self,request):
+        data = request.data
+        customer_email = data["email"]
+        html_message = render_to_string('change_password_template.html')
+        plain_message = strip_tags(html_message)
+
+        send_mail('Mebelkom - Мебельный гиппермаркет',
+                              plain_message,
+                              'mebelkomniko@gmail.com',
+                              [customer_email,], html_message=html_message,)
+        return Response(status=201)  
+
+class PasswordResetView(APIView):
+    def get (self, request, uid, token):
+        post_data = {'uid': uid, 'token': token}
+        print(post_data)
+        return Response(post_data)    

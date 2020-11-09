@@ -6,7 +6,7 @@ from product.views import GetCategoryViewSet,GetProductForHomeViewSet,GetProduct
 from order.views import ProductInBasketViewSet,Order,OrderViewSet,ProductInOrderViewSet
 from order.views import ProductInBasket,DeleteProductInBasket,UpdateProductInBasket
 from blog.views import BlogViewSet,TegViewSet
-from users.views import UserViewSet
+from users.views import UserViewSet,SendMailForNewEmail,PasswordResetView
 from userCabinet.views import ClientViewSet
 from home.views import BigSliderViewSet,AdvertisingImageViewSet
 from wishlist.views import WishlistPost,WishlistViewSet,DeleteWishlist
@@ -80,6 +80,8 @@ urlpatterns = [
     path('order/',Order.as_view()),
     path('wishlispost/',WishlistPost.as_view()),
     path('deletewishlist/',DeleteWishlist.as_view()),
+    path('changepassword/',SendMailForNewEmail.as_view()),
+    path('password/reset/confirm/', PasswordResetView.as_view(),),
 
 ]\
                + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)\

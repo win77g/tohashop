@@ -25,9 +25,9 @@ SECRET_KEY = '$2s81)%!49cba64kgl0hbrwk3y0yqfch$a408h##)6u_$6mrij'
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = True
-#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = []
 #DEBUG = False
-ALLOWED_HOSTS = ['www.mebelkom.com.ua']
+#ALLOWED_HOSTS = ['www.mebelkom.com.ua']
 
 
 # Application definition
@@ -240,17 +240,12 @@ REST_FRAMEWORK = {
 
 # AUTH_USER_MODEL = 'authapp.User'
 DJOSER = {
-    'LOGIN_FIELD': 'email',}
-#     'USER_CREATE_PASWORD_RETYPE':True,
-#     'SERIALIZERS':{
-#         'user_create':'authapp.serializers.UserCreateSerializer',
-#         'user':'authapp.serializers.UserCreateSerializer',
-#         # 'current_user':'authentication.serializers.CurrentUserSerializer',
-#     }
-# }
-# SUIT_CONFIG = {
-# 'ADMIN_NAME': 'Django Suit'
-# }
+    'LOGIN_FIELD': 'email',
+    'PASSWORD_RESET_CONFIRM_URL': '#/password/reset/confirm/{uid}/{token}',
+    'USERNAME_RESET_CONFIRM_URL': '#/username/reset/confirm/{uid}/{token}',
+    'ACTIVATION_URL': '#/activate/{uid}/{token}',
+    'SEND_ACTIVATION_EMAIL': True,}
+
 
 EMAIL_HOST = 'smtp.gmail.com'
 #EMAIL_HOST_USER = 'sergsergio777@gmail.com'
