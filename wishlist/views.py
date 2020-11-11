@@ -37,6 +37,16 @@ class WishlistPost(APIView):
             pr = KuhniModel.objects.filter(slug=slug).values()
            if (category=='shkaf'):
             pr = SkafModel.objects.filter(slug=slug).values()
+            product = querySet_to_list(pr)
+            product = product[0]
+            wish = WishlistModel.objects.get_or_create(token_key = token_key,
+                                         product_name = product["name"],
+                                         category = category,
+                                         slug = slug,
+                                         price =  product["price_g450_st"],
+                                         image = product["image_1"],
+                                         brend = product["brend_id"])
+            return Response({'status':201})                              
            if (category=='gostinye'):
             pr = GostinyeModel.objects.filter(slug=slug).values()
            if (category=='prihozhie'):
