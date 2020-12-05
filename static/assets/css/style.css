@@ -7249,3 +7249,8 @@ body.modal-open {
 	font-size: 27px;
 }
 /* search end */
+@media only screen and (min-width: 1000px) {
+  .mobMenu {
+    display: none;
+  }
+}
