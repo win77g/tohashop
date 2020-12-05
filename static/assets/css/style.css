@@ -7249,7 +7249,7 @@ body.modal-open {
 	font-size: 27px;
 }
 /* search end */
-@media only screen and (min-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   .mobMenuSocial {
     display: none;
   }
